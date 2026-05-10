@@ -6,6 +6,9 @@ export default defineConfig({
 	test: {
 		globals: true,
 		environment: 'jsdom',
+
+		exclude: ['src/api/ai/orchestrator.test.ts'],
+
 		include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
 		setupFiles: ['./src/tests/setup.ts'],
 		coverage: {

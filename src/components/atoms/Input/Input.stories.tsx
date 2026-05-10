@@ -1,64 +1,92 @@
-// import type { Meta, StoryObj } from '@storybook/react';
-// import   Input  from './Input';
+ import type { Meta, StoryObj } from '@storybook/react';
+ import   Input  from './Input';
 
-// const meta = {
-//   title: 'Atoms/Input',
-//   component: Input,
-//   parameters: {
-//     layout: 'centered',
-//   },
-//   tags: ['autodocs'],
-// } satisfies Meta<typeof Input>;
+const meta: Meta<typeof Input> = {
+  title: 'Atoms/Input',
+  component: Input,
 
-// export default meta;
-// type Story = StoryObj<typeof meta>;
+  parameters: {
+    layout: 'padded',
+  },
 
-// export const Default: Story = {
-//   args: {
-//     placeholder: 'Enter text here',
-//   },
-// };
+  decorators: [
+    (Story) => (
+      <div className="w-[400px] p-4">
+        <Story />
+      </div>
+    ),
+  ],
 
-// export const WithLabel: Story = {
-//   args: {
-//     label: 'Email',
-//     placeholder: 'Enter your email',
-//     type: 'email',
-//   },
-// };
+  tags: ['autodocs'],
 
-// export const WithError: Story = {
-//   args: {
-//     label: 'Password',
-//     type: 'password',
-//     error: 'Password must be at least 8 characters',
-//     placeholder: 'Enter your password',
-//   },
-// };
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['text', 'number', 'formatted-number', 'integer'],
+    },
 
-// export const Disabled: Story = {
-//   args: {
-//     label: 'Username',
-//     placeholder: 'Enter your username',
-//     disabled: true,
-//   },
-// };
+    size: {
+      control: 'select',
+      options: ['sm', 'default', 'lg'],
+    },
 
-// export const FullWidth: Story = {
-//   args: {
-//     label: 'Full Name',
-//     placeholder: 'Enter your full name',
-//     fullWidth: true,
-//   },
-//   parameters: {
-//     layout: 'padded',
-//   },
-// };
+    disabled: {
+      control: 'boolean',
+    },
 
-// export const WithValue: Story = {
-//   args: {
-//     label: 'Name',
-//     value: 'John Doe',
-//     placeholder: 'Enter your name',
-//   },
-// };
+    type: {
+      control: 'select',
+      options: ['text', 'email', 'password', 'number'],
+    },
+  },
+};
+ export default meta;
+ type Story = StoryObj<typeof meta>;
+
+ export const Default: Story = {
+   args: {
+     placeholder: 'Enter text here',
+   },
+ };
+ export const WithLabel: Story = {
+   args: {
+     label: 'Email',
+     placeholder: 'Enter your email',
+     type: 'email',
+   },
+ };
+ export const WithError: Story = {
+   args: {
+     label: 'Password',
+     type: 'password',
+     error: 'Password must be at least 8 characters',
+     placeholder: 'Enter your password',
+   },
+ };
+
+ export const Disabled: Story = {
+   args: {
+     label: 'Username',
+     placeholder: 'Enter your username',
+     disabled: true,
+   },
+ };
+
+ export const FullWidth: Story = {
+   args: {
+     label: 'Full Name',
+     placeholder: 'Enter your full name',
+     fullWidth: true,
+   },
+   parameters: {
+     layout: 'padded',
+   },
+ };
+
+ export const WithValue: Story = {
+   args: {
+     label: 'Name',
+     value: 'John Doe',
+     placeholder: 'Enter your name',
+   },
+ };
