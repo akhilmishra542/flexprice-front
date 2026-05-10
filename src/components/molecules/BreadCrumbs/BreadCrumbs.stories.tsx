@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import BreadCrumbs from './BreadCrumbs';
 
 const meta: Meta<typeof BreadCrumbs> = {
-  title: 'Molecules/BreadCrumbs',
-  component: BreadCrumbs,
-  parameters: {
-    layout: 'fullscreen',
-  },
-  tags: ['autodocs'],
+	title: 'Molecules/BreadCrumbs',
+	component: BreadCrumbs,
+	parameters: {
+		layout: 'fullscreen',
+	},
+	tags: ['autodocs'],
 };
 
 export default meta;

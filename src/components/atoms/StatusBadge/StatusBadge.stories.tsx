@@ -3,7 +3,6 @@ import { expect, within } from '@storybook/test';
 import StatusBadge from './StatusBadge';
 import type { StatusType } from './StatusBadge';
 
-
 const meta: Meta<typeof StatusBadge> = {
 	title: 'Atoms/StatusBadge',
 	component: StatusBadge,
@@ -21,7 +20,7 @@ const meta: Meta<typeof StatusBadge> = {
 
 	decorators: [
 		(Story) => (
-			<div className="flex items-center justify-center p-8">
+			<div className='flex items-center justify-center p-8'>
 				<Story />
 			</div>
 		),
@@ -34,9 +33,17 @@ const meta: Meta<typeof StatusBadge> = {
 			description: 'Domain status string — drives color and default label.',
 			control: 'select',
 			options: [
-				'active', 'archived', 'draft',
-				'paid', 'pending', 'void', 'failed',
-				'cancelled', 'expired', 'trial', 'paused',
+				'active',
+				'archived',
+				'draft',
+				'paid',
+				'pending',
+				'void',
+				'failed',
+				'cancelled',
+				'expired',
+				'trial',
+				'paused',
 				'processed',
 			] satisfies StatusType[],
 			table: { defaultValue: { summary: 'active' } },
@@ -58,7 +65,6 @@ const meta: Meta<typeof StatusBadge> = {
 
 export default meta;
 type Story = StoryObj<typeof StatusBadge>;
-
 
 /** Fully interactive playground — tweak every prop in the Controls panel. */
 export const Default: Story = {
@@ -208,66 +214,55 @@ export const UnknownStatus: Story = {
 export const AllStatuses: Story = {
 	name: 'Overview — All statuses',
 	render: () => (
-		<div className="space-y-4 p-4">
+		<div className='space-y-4 p-4'>
 			<div>
-				<p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-					Plan
-				</p>
-				<div className="flex flex-wrap gap-2">
-					<StatusBadge status="active" />
-					<StatusBadge status="draft" />
-					<StatusBadge status="archived" />
+				<p className='text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2'>Plan</p>
+				<div className='flex flex-wrap gap-2'>
+					<StatusBadge status='active' />
+					<StatusBadge status='draft' />
+					<StatusBadge status='archived' />
 				</div>
 			</div>
 
 			<div>
-				<p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-					Invoice
-				</p>
-				<div className="flex flex-wrap gap-2">
-					<StatusBadge status="paid" />
-					<StatusBadge status="pending" />
-					<StatusBadge status="draft" />
-					<StatusBadge status="void" />
-					<StatusBadge status="failed" />
+				<p className='text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2'>Invoice</p>
+				<div className='flex flex-wrap gap-2'>
+					<StatusBadge status='paid' />
+					<StatusBadge status='pending' />
+					<StatusBadge status='draft' />
+					<StatusBadge status='void' />
+					<StatusBadge status='failed' />
 				</div>
 			</div>
 
 			<div>
-				<p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-					Subscription
-				</p>
-				<div className="flex flex-wrap gap-2">
-					<StatusBadge status="active" />
-					<StatusBadge status="trial" />
-					<StatusBadge status="paused" />
-					<StatusBadge status="cancelled" />
-					<StatusBadge status="expired" />
+				<p className='text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2'>Subscription</p>
+				<div className='flex flex-wrap gap-2'>
+					<StatusBadge status='active' />
+					<StatusBadge status='trial' />
+					<StatusBadge status='paused' />
+					<StatusBadge status='cancelled' />
+					<StatusBadge status='expired' />
 				</div>
 			</div>
 
 			<div>
-				<p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-					Events
-				</p>
-				<div className="flex flex-wrap gap-2">
-					<StatusBadge status="processed" />
-					<StatusBadge status="pending" />
-					<StatusBadge status="failed" />
+				<p className='text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2'>Events</p>
+				<div className='flex flex-wrap gap-2'>
+					<StatusBadge status='processed' />
+					<StatusBadge status='pending' />
+					<StatusBadge status='failed' />
 				</div>
 			</div>
 
 			<div>
-				<p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-					Without dot
-				</p>
-				<div className="flex flex-wrap gap-2">
-					<StatusBadge status="active" showDot={false} />
-					<StatusBadge status="paid" showDot={false} />
-					<StatusBadge status="failed" showDot={false} />
+				<p className='text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2'>Without dot</p>
+				<div className='flex flex-wrap gap-2'>
+					<StatusBadge status='active' showDot={false} />
+					<StatusBadge status='paid' showDot={false} />
+					<StatusBadge status='failed' showDot={false} />
 				</div>
 			</div>
 		</div>
 	),
 };
-

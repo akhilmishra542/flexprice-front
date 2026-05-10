@@ -2,14 +2,14 @@ import type { Meta, StoryObj } from '@storybook/react';
 import SearchBar from './SearchBar';
 
 const meta: Meta<typeof SearchBar> = {
-  title: 'Molecules/SearchBar',
-  component: SearchBar,
+	title: 'Molecules/SearchBar',
+	component: SearchBar,
 
-  parameters: {
-    layout: 'centered',
-  },
+	parameters: {
+		layout: 'centered',
+	},
 
-  tags: ['autodocs'],
+	tags: ['autodocs'],
 };
 
 export default meta;
@@ -17,20 +17,20 @@ export default meta;
 type Story = StoryObj<typeof SearchBar>;
 
 export const Default: Story = {
-  args: {
-    placeholder: 'Search customers...',
-  },
+	args: {
+		placeholder: 'Search customers...',
+	},
 };
 
 export const WithText: Story = {
-  args: {
-    value: 'FlexPrice',
-  },
+	args: {
+		value: 'FlexPrice',
+	},
 };
 
 export const Disabled: Story = {
-  args: {
-    disabled: true,
-    placeholder: 'Disabled search...',
-  },
+	args: {
+		disabled: true,
+		placeholder: 'Disabled search...',
+	},
 };

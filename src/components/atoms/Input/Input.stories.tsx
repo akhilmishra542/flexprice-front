@@ -1,92 +1,92 @@
- import type { Meta, StoryObj } from '@storybook/react';
- import   Input  from './Input';
+import type { Meta, StoryObj } from '@storybook/react';
+import Input from './Input';
 
 const meta: Meta<typeof Input> = {
-  title: 'Atoms/Input',
-  component: Input,
+	title: 'Atoms/Input',
+	component: Input,
 
-  parameters: {
-    layout: 'padded',
-  },
+	parameters: {
+		layout: 'padded',
+	},
 
-  decorators: [
-    (Story) => (
-      <div className="w-[400px] p-4">
-        <Story />
-      </div>
-    ),
-  ],
+	decorators: [
+		(Story) => (
+			<div className='w-[400px] p-4'>
+				<Story />
+			</div>
+		),
+	],
 
-  tags: ['autodocs'],
+	tags: ['autodocs'],
 
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['text', 'number', 'formatted-number', 'integer'],
-    },
+	argTypes: {
+		variant: {
+			control: 'select',
+			options: ['text', 'number', 'formatted-number', 'integer'],
+		},
 
-    size: {
-      control: 'select',
-      options: ['sm', 'default', 'lg'],
-    },
+		size: {
+			control: 'select',
+			options: ['sm', 'default', 'lg'],
+		},
 
-    disabled: {
-      control: 'boolean',
-    },
+		disabled: {
+			control: 'boolean',
+		},
 
-    type: {
-      control: 'select',
-      options: ['text', 'email', 'password', 'number'],
-    },
-  },
+		type: {
+			control: 'select',
+			options: ['text', 'email', 'password', 'number'],
+		},
+	},
 };
- export default meta;
- type Story = StoryObj<typeof meta>;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
- export const Default: Story = {
-   args: {
-     placeholder: 'Enter text here',
-   },
- };
- export const WithLabel: Story = {
-   args: {
-     label: 'Email',
-     placeholder: 'Enter your email',
-     type: 'email',
-   },
- };
- export const WithError: Story = {
-   args: {
-     label: 'Password',
-     type: 'password',
-     error: 'Password must be at least 8 characters',
-     placeholder: 'Enter your password',
-   },
- };
+export const Default: Story = {
+	args: {
+		placeholder: 'Enter text here',
+	},
+};
+export const WithLabel: Story = {
+	args: {
+		label: 'Email',
+		placeholder: 'Enter your email',
+		type: 'email',
+	},
+};
+export const WithError: Story = {
+	args: {
+		label: 'Password',
+		type: 'password',
+		error: 'Password must be at least 8 characters',
+		placeholder: 'Enter your password',
+	},
+};
 
- export const Disabled: Story = {
-   args: {
-     label: 'Username',
-     placeholder: 'Enter your username',
-     disabled: true,
-   },
- };
+export const Disabled: Story = {
+	args: {
+		label: 'Username',
+		placeholder: 'Enter your username',
+		disabled: true,
+	},
+};
 
- export const FullWidth: Story = {
-   args: {
-     label: 'Full Name',
-     placeholder: 'Enter your full name',
-     fullWidth: true,
-   },
-   parameters: {
-     layout: 'padded',
-   },
- };
+export const FullWidth: Story = {
+	args: {
+		label: 'Full Name',
+		placeholder: 'Enter your full name',
+		fullWidth: true,
+	},
+	parameters: {
+		layout: 'padded',
+	},
+};
 
- export const WithValue: Story = {
-   args: {
-     label: 'Name',
-     value: 'John Doe',
-     placeholder: 'Enter your name',
-   },
- };
+export const WithValue: Story = {
+	args: {
+		label: 'Name',
+		value: 'John Doe',
+		placeholder: 'Enter your name',
+	},
+};

@@ -146,25 +146,11 @@ const StatusBadge = ({ status, showDot = true, label, className, ...props }: Sta
 	const displayLabel = label ?? config.label;
 
 	return (
-		<Badge
-			variant="outline"
-			className={cn(
-				'gap-1.5 font-medium capitalize border',
-				config.className,
-				className,
-			)}
-			{...props}
-		>
-			{showDot && (
-				<span
-					className={cn('h-1.5 w-1.5 rounded-full shrink-0', config.dotColor)}
-					aria-hidden="true"
-				/>
-			)}
+		<Badge variant='outline' className={cn('gap-1.5 font-medium capitalize border', config.className, className)} {...props}>
+			{showDot && <span className={cn('h-1.5 w-1.5 rounded-full shrink-0', config.dotColor)} aria-hidden='true' />}
 			{displayLabel}
 		</Badge>
 	);
 };
 
 export default StatusBadge;
-

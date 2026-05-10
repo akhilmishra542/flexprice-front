@@ -118,63 +118,53 @@ import{j as e}from"./jsx-runtime-Cf8x2fCZ.js";import{within as B,expect as r}fro
   }
 }`,...(Ze=(Ye=S.parameters)==null?void 0:Ye.docs)==null?void 0:Ze.source},description:{story:'Unknown status — falls back to a neutral gray "Unknown" chip.',...(ea=($e=S.parameters)==null?void 0:$e.docs)==null?void 0:ea.description}}};var aa,sa,ta,ra,na;b.parameters={...b.parameters,docs:{...(aa=b.parameters)==null?void 0:aa.docs,source:{originalSource:`{
   name: 'Overview — All statuses',
-  render: () => <div className="space-y-4 p-4">\r
+  render: () => <div className='space-y-4 p-4'>\r
             <div>\r
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">\r
-                    Plan\r
-                </p>\r
-                <div className="flex flex-wrap gap-2">\r
-                    <StatusBadge status="active" />\r
-                    <StatusBadge status="draft" />\r
-                    <StatusBadge status="archived" />\r
+                <p className='text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2'>Plan</p>\r
+                <div className='flex flex-wrap gap-2'>\r
+                    <StatusBadge status='active' />\r
+                    <StatusBadge status='draft' />\r
+                    <StatusBadge status='archived' />\r
                 </div>\r
             </div>\r
 \r
             <div>\r
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">\r
-                    Invoice\r
-                </p>\r
-                <div className="flex flex-wrap gap-2">\r
-                    <StatusBadge status="paid" />\r
-                    <StatusBadge status="pending" />\r
-                    <StatusBadge status="draft" />\r
-                    <StatusBadge status="void" />\r
-                    <StatusBadge status="failed" />\r
+                <p className='text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2'>Invoice</p>\r
+                <div className='flex flex-wrap gap-2'>\r
+                    <StatusBadge status='paid' />\r
+                    <StatusBadge status='pending' />\r
+                    <StatusBadge status='draft' />\r
+                    <StatusBadge status='void' />\r
+                    <StatusBadge status='failed' />\r
                 </div>\r
             </div>\r
 \r
             <div>\r
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">\r
-                    Subscription\r
-                </p>\r
-                <div className="flex flex-wrap gap-2">\r
-                    <StatusBadge status="active" />\r
-                    <StatusBadge status="trial" />\r
-                    <StatusBadge status="paused" />\r
-                    <StatusBadge status="cancelled" />\r
-                    <StatusBadge status="expired" />\r
+                <p className='text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2'>Subscription</p>\r
+                <div className='flex flex-wrap gap-2'>\r
+                    <StatusBadge status='active' />\r
+                    <StatusBadge status='trial' />\r
+                    <StatusBadge status='paused' />\r
+                    <StatusBadge status='cancelled' />\r
+                    <StatusBadge status='expired' />\r
                 </div>\r
             </div>\r
 \r
             <div>\r
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">\r
-                    Events\r
-                </p>\r
-                <div className="flex flex-wrap gap-2">\r
-                    <StatusBadge status="processed" />\r
-                    <StatusBadge status="pending" />\r
-                    <StatusBadge status="failed" />\r
+                <p className='text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2'>Events</p>\r
+                <div className='flex flex-wrap gap-2'>\r
+                    <StatusBadge status='processed' />\r
+                    <StatusBadge status='pending' />\r
+                    <StatusBadge status='failed' />\r
                 </div>\r
             </div>\r
 \r
             <div>\r
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">\r
-                    Without dot\r
-                </p>\r
-                <div className="flex flex-wrap gap-2">\r
-                    <StatusBadge status="active" showDot={false} />\r
-                    <StatusBadge status="paid" showDot={false} />\r
-                    <StatusBadge status="failed" showDot={false} />\r
+                <p className='text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2'>Without dot</p>\r
+                <div className='flex flex-wrap gap-2'>\r
+                    <StatusBadge status='active' showDot={false} />\r
+                    <StatusBadge status='paid' showDot={false} />\r
+                    <StatusBadge status='failed' showDot={false} />\r
                 </div>\r
             </div>\r
         </div>
