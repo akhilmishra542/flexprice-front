@@ -1,6 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
 import { ArrowDown, ArrowUp, ChevronLeft, ChevronRight } from 'lucide-react';
-
 import { useVirtualizer } from '@tanstack/react-virtual';
 
 interface DataTableColumn {
@@ -33,14 +32,15 @@ function DataTable({
 
 	const parentRef = useRef<HTMLDivElement>(null);
 
-	const totalPages = useMemo(() => Math.max(1, Math.ceil(data.length / pageSize)), [data.length, pageSize]);
+	const totalPages = useMemo(() => {
+		return Math.max(1, Math.ceil(data.length / pageSize));
+	}, [data.length, pageSize]);
 
 	const sortedData = useMemo(() => {
 		if (!sortKey) return data;
 
 		return [...data].sort((a, b) => {
 			const aValue = String(a[sortKey] ?? '');
-
 			const bValue = String(b[sortKey] ?? '');
 
 			if (sortDirection === 'asc') {
@@ -62,16 +62,16 @@ function DataTable({
 	const rowVirtualizer = useVirtualizer({
 		count: paginatedData.length,
 		getScrollElement: () => parentRef.current,
-		estimateSize: () => 56,
-		overscan: 10,
+		estimateSize: () => 60,
+		overscan: 12,
 	});
 
 	return (
-		<div className='overflow-hidden rounded-xl border bg-white shadow-sm'>
-			<div ref={parentRef} className={virtualized ? 'h-[500px] overflow-y-auto overflow-x-hidden' : ''}>
-				<table className='w-full border-collapse text-left'>
-					<thead className='sticky top-0 z-10 border-b bg-slate-50 text-sm text-slate-700'>
-						<tr>
+		<div className='overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm'>
+			<div ref={parentRef} className={virtualized ? 'h-[650px] overflow-y-auto' : ''}>
+				<table className='w-full table-fixed border-collapse'>
+					<thead className='sticky top-0 z-10 bg-slate-100'>
+						<tr className='border-b border-slate-200'>
 							{columns.map((column) => (
 								<th
 									key={column.key}
@@ -83,13 +83,12 @@ function DataTable({
 											setSortDirection('asc');
 										}
 									}}
-									className='cursor-pointer select-none px-4 py-3 font-medium'>
-									<div className='flex items-center gap-2'>
+									className='cursor-pointer px-6 py-4 text-center text-sm font-semibold text-slate-700 transition hover:bg-slate-200'>
+									<div className='flex items-center justify-center gap-2'>
 										{column.header}
 
-										{sortKey === column.key && (
-											<>{sortDirection === 'asc' ? <ArrowUp className='h-4 w-4' /> : <ArrowDown className='h-4 w-4' />}</>
-										)}
+										{sortKey === column.key &&
+											(sortDirection === 'asc' ? <ArrowUp className='h-4 w-4' /> : <ArrowDown className='h-4 w-4' />)}
 									</div>
 								</th>
 							))}
@@ -99,62 +98,61 @@ function DataTable({
 					<tbody>
 						{loading ? (
 							Array.from({ length: pageSize }).map((_, index) => (
-								<tr key={index} className='animate-pulse border-t'>
+								<tr key={index} className='border-b'>
 									{columns.map((column) => (
-										<td key={column.key} className='px-4 py-4'>
-											<div className='h-4 rounded bg-slate-200' />
+										<td key={column.key} className='px-6 py-5'>
+											<div className='h-4 animate-pulse rounded bg-slate-200' />
 										</td>
 									))}
 								</tr>
 							))
 						) : paginatedData.length === 0 ? (
 							<tr>
-								<td colSpan={columns.length} className='px-4 py-10 text-center text-slate-500'>
+								<td colSpan={columns.length} className='px-6 py-16 text-center text-slate-500'>
 									{emptyMessage}
 								</td>
 							</tr>
 						) : virtualized ? (
 							<tr>
-								<td
-									colSpan={columns.length}
-									style={{
-										height: `${rowVirtualizer.getTotalSize()}px`,
-										position: 'relative',
-									}}>
-									{rowVirtualizer.getVirtualItems().map((virtualRow) => {
-										const row = paginatedData[virtualRow.index];
+								<td colSpan={columns.length} className='p-0'>
+									<div
+										style={{
+											height: `${rowVirtualizer.getTotalSize()}px`,
+											position: 'relative',
+										}}>
+										{rowVirtualizer.getVirtualItems().map((virtualRow) => {
+											const row = paginatedData[virtualRow.index];
 
-										return (
-											<div
-												key={virtualRow.key}
-												style={{
-													position: 'absolute',
-													top: 0,
-													left: 0,
-													width: '100%',
-													transform: `translateY(${virtualRow.start}px)`,
-												}}>
-												<table className='w-full'>
-													<tbody>
-														<tr className='border-b hover:bg-slate-50'>
-															{columns.map((column) => (
-																<td key={column.key} className='px-4 py-4'>
-																	{String(row[column.key] ?? '')}
-																</td>
-															))}
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										);
-									})}
+											return (
+												<div
+													key={virtualRow.key}
+													className='grid border-b border-slate-100 transition hover:bg-slate-50'
+													style={{
+														gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))`,
+														position: 'absolute',
+														top: 0,
+														left: 0,
+														width: '100%',
+														height: `${virtualRow.size}px`,
+														transform: `translateY(${virtualRow.start}px)`,
+														alignItems: 'center',
+													}}>
+													{columns.map((column) => (
+														<div key={column.key} className='truncate px-6 text-center text-sm text-slate-700'>
+															{String(row[column.key] ?? '')}
+														</div>
+													))}
+												</div>
+											);
+										})}
+									</div>
 								</td>
 							</tr>
 						) : (
 							paginatedData.map((row, index) => (
-								<tr key={index} className='border-t hover:bg-slate-50'>
+								<tr key={index} className='border-b border-slate-100 transition hover:bg-slate-50'>
 									{columns.map((column) => (
-										<td key={column.key} className='px-4 py-3'>
+										<td key={column.key} className='px-6 py-4 text-center text-sm text-slate-700'>
 											{String(row[column.key] ?? '')}
 										</td>
 									))}
@@ -166,8 +164,8 @@ function DataTable({
 			</div>
 
 			{!loading && !virtualized && totalPages > 1 && (
-				<div className='flex items-center justify-between border-t bg-slate-50 px-4 py-3'>
-					<p className='text-sm text-slate-500'>
+				<div className='flex items-center justify-between border-t border-slate-200 bg-slate-50 px-6 py-4'>
+					<p className='text-sm text-slate-600'>
 						Page {page} of {totalPages}
 					</p>
 
@@ -175,14 +173,14 @@ function DataTable({
 						<button
 							disabled={page === 1}
 							onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-							className='rounded-md border p-2 disabled:opacity-50'>
+							className='rounded-lg border border-slate-200 bg-white p-2 transition hover:bg-slate-100 disabled:opacity-50'>
 							<ChevronLeft className='h-4 w-4' />
 						</button>
 
 						<button
 							disabled={page === totalPages}
 							onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
-							className='rounded-md border p-2 disabled:opacity-50'>
+							className='rounded-lg border border-slate-200 bg-white p-2 transition hover:bg-slate-100 disabled:opacity-50'>
 							<ChevronRight className='h-4 w-4' />
 						</button>
 					</div>
